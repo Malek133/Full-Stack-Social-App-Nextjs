@@ -1,11 +1,26 @@
 
+import { ModeToggle } from '@/components/ModeToggle';
+import { Button } from '@/components/ui/button';
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 export default function Home() {
   return (
-    <div>
-      <h1>
-        Hello Alphazero 774
-      </h1>
+    <div className='flex justify-end items-center gap-5 my-2 mx-3'>
+      <SignedOut>
+            <SignInButton mode='modal' >
+              <Button className='bg-red-500'>Sign in</Button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+
+          <ModeToggle />
     </div>
   );
 }
