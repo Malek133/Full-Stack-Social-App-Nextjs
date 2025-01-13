@@ -1,28 +1,21 @@
+import CreatePost from "@/components/CreatePost";
+import WhoToFollow from "@/components/WhoToFollow";
+import { currentUser } from "@clerk/nextjs/server";
 
-// import { ModeToggle } from '@/components/ModeToggle';
-// import { Button } from '@/components/ui/button';
-// import {
-//   SignInButton,
-//   SignedIn,
-//   SignedOut,
-//   UserButton
-// } from '@clerk/nextjs'
 
-export default function Home() {
+
+export default async function Home() {
+  const user = await currentUser()
   return (
-    <div className='flex justify-center items-center gap-5 my-2 mx-3'>
-      {/* <SignedOut>
-            <SignInButton mode='modal' >
-              <Button className='bg-red-500'>Sign in</Button>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+    <div className='grid grid-cols-1 lg:grid-cols-10 gap-6'>
+      <div className="lg:col-span-6">
+      {user ? <CreatePost /> : null}
+      </div>
 
-          <ModeToggle /> */}
-
-          Alphazero 774
+     <div className="hidden lg:block lg:col-span-4 sticky top-20">
+        <WhoToFollow />
+      </div>
+       
     </div>
   );
 }

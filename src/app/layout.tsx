@@ -7,6 +7,7 @@ import {
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/NavBar";
 import Sidebar from "@/components/Sidebar";
+ import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,10 +57,12 @@ export default function RootLayout({
                   </div>
                 </div>
               </main>
-            </div>
+            </div> 
+            <Toaster />
           </ThemeProvider>
       </body>
     </html>
+   
     </ClerkProvider>
   );
 }
